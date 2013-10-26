@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>About Us</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="css/themes/life.css" />
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />	
+    <link rel="stylesheet" type="text/css" href="css/bshop.css">
+	
+ <script type="text/javascript" charset="utf-8" src="js/cordova-2.0.0.js"></script>
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.2.1.js"></script>
+	<script type="text/javascript" src="js/jquery.touch-gallery-1.0.0.js"></script>
+	<script type="text/javascript" src="js/jquery.touch-gallery-1.0.0.min.js"></script>
+	
+	<script type="text/javascript">
+		
+		/*
+		 * IMPORTANT!!!
+		 * REMEMBER TO ADD  rel="external"  to your anchor tags. 
+		 * If you don't this will mess with how jQuery Mobile works
+		 */
+		
+		(function(window, $, PhotoSwipe){
+			
+			$(document).ready(function(){
+				
+				$('div.gallery-page')
+					.live('pageshow', function(e){
+						
+						var 
+							currentPage = $(e.target),
+							options = {},
+							photoSwipeInstance = $("ul.gallery a", e.target).photoSwipe(options,  currentPage.attr('id'));
+							
+						return true;
+						
+					})
+					
+					.live('pagehide', function(e){
+						
+						var 
+							currentPage = $(e.target),
+							photoSwipeInstance = PhotoSwipe.getInstance(currentPage.attr('id'));
+
+						if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null) {
+							PhotoSwipe.detatch(photoSwipeInstance);
+						}
+						
+						return true;
+						
+					});
+				
+			});
+		
+		}(window, window.jQuery, window.Code.PhotoSwipe));
+		
+	</script>
+
+</head> 
+<body> 
+<div data-role="page" id="five" style=" background-color:white;width:100%; height:100%;data-theme=e"  >	
+	<div data-role="header" data-theme="e"  style="min-height: 30px;" data-position="fixed" >
+	<h1></h1>
+		<a href="" class="ui-btn-left" data-rel="back" data-inline="true">Back</a>
+	</div><!-- /header -->
+	<div data-role="content" data-theme="e">
+	
+	<ul data-role="listview" data-corners="false" data-theme="d"id="jams" data-corners="false">
+<li ><a href="wed.html" data-corners="false">Weddings</a></li>
+<li><a href="fam.html" data-corners="false">Family </a></li>
+				<li ><a href="sen.html"data-icon="custom" data-corners="false" > Senior</a></li>
+				<li><a href="eng.html" data-corners="false">Engagments</a></li>
+				<li><a href="hds.html" data-corners="false">Headshots </a></li>
+			
+				</ul>
+				
+	</div><!-- /content -->	 
+</div>
+<!-- /footer -->	
+<!-- /page one -->
+</body>
+</html>
